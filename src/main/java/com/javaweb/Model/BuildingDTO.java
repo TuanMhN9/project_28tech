@@ -1,5 +1,5 @@
 package com.javaweb.Model;
-
+// các thực thể
 public class BuildingDTO {
 	private String name;
 	private Integer NOB;
