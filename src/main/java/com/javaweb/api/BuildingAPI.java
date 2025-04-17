@@ -24,7 +24,7 @@ public class BuildingAPI {
 	@Autowired
 	private BuildingService buildingService;//ko duoc goi truc tiep ma phai su dung annotation @Autowired
 	
-	@GetMapping(value="api/building/")
+	@GetMapping(value="/api/building/")
 	public List<BuildingDTO> getBuilding(@RequestParam(value="name", required = false) String name,
 										@RequestParam(value="districtId", required = false) Long districtId,
 										@RequestParam(value="typecode", required = false) String typeCode) {
