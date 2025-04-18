@@ -2,7 +2,7 @@ package com.javaweb.Repository.Entity;
 
 public class BuildingEntity {
 	private String name;
-	private Integer NOB;
+	private Long NOB;
 	private String ward;
 	private String street;
 
@@ -14,11 +14,11 @@ public class BuildingEntity {
 		this.name = name;
 	}
 
-	public Integer getNOB() {
+	public Long getNOB() {
 		return NOB;
 	}
 
-	public void setNOB(Integer nOB) {
+	public void setNOB(Long nOB) {
 		NOB = nOB;
 	}
 

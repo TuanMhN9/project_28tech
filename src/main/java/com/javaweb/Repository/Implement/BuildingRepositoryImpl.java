@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -16,19 +17,19 @@ import com.javaweb.Repository.Entity.BuildingEntity;
 
 @Repository
 public class BuildingRepositoryImpl implements BuildingRepository {
-	static final String DB_URL = "jdbc:mysql://localhost:3306/estatebasic";
+	static final String DB_URL = "jdbc:mysql://localhost:3306/estatebasic1";
 	static final String USER = "root";
 	static final String PASS = "tuancn04@";
 
 	@Override
-	public List<BuildingEntity> FindAll(String name, Long districtId) {
+	public List<BuildingEntity> findAll(Map<String, Object> params) {
 		StringBuilder sql = new StringBuilder("SELECT * FROM building WHERE 1 = 1");
-		if(name != null && name.equals("")) {
-			sql.append(" AND b.name like '%" + name + "%' ");
-		}
-		if(districtId != null) {
-			sql.append(" AND b.district = " + districtId + " ");
-		}
+//		if(name != null && name.equals("")) {
+//			sql.append(" AND b.name like '%" + name + "%' ");
+//		}
+//		if(districtId != null) {
+//			sql.append(" AND b.district = " + districtId + " ");
+//		}
 		List<BuildingEntity> result = new ArrayList<>();
 		try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 				Statement stmt = conn.createStatement();
@@ -38,7 +39,7 @@ public class BuildingRepositoryImpl implements BuildingRepository {
 				building.setName(rs.getString("name"));
 				building.setStreet(rs.getString("street"));
 				building.setWard(rs.getString("ward"));
-				building.setNOB(rs.getInt("NOB"));
+//				building.setNOB(rs.getLong("NOB"));
 				result.add(building);
 			}
 
@@ -46,7 +47,7 @@ public class BuildingRepositoryImpl implements BuildingRepository {
 			e.printStackTrace();
 		}
 
-		return null;
+		return result;
 	}
 
 }
